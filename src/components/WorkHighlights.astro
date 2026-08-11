@@ -1,0 +1,37 @@
+---
+import { site } from '../data/site';
+---
+
+<section id="work" class="border-t border-border/60">
+	<div class="section-shell">
+		<p class="section-label">Work</p>
+		<h2 class="section-title">Work highlights</h2>
+		<p class="mt-3 max-w-2xl text-muted">
+			Selected highlights from real projects — described without client names or sensitive details.
+		</p>
+		<ul class="mt-10 grid gap-6 md:grid-cols-3">
+			{
+				site.work.map((item) => (
+					<li class="glass-card overflow-hidden">
+						<img
+							src={item.image}
+							alt={item.imageAlt}
+							class="aspect-[16/10] w-full object-cover"
+							loading="lazy"
+						/>
+						<div class="space-y-3 p-5">
+							<h3 class="text-lg font-medium text-text">{item.title}</h3>
+							<p class="font-mono text-xs text-accent">{item.role}</p>
+							<p class="text-sm leading-relaxed text-muted">
+								<span class="text-text/90">Challenge:</span> {item.challenge}
+							</p>
+							<p class="text-sm leading-relaxed text-muted">
+								<span class="text-text/90">Impact:</span> {item.impact}
+							</p>
+						</div>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>

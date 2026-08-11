@@ -1,0 +1,45 @@
+---
+import { site } from '../data/site';
+---
+
+<section id="contact" class="border-t border-border/60">
+	<div class="section-shell">
+		<p class="section-label">Contact</p>
+		<h2 class="section-title">{site.contact.headline}</h2>
+		<p class="mt-3 max-w-xl text-muted">{site.contact.body}</p>
+
+		<div class="mt-8 flex flex-wrap gap-3">
+			<a class="btn-primary" href={`mailto:${site.contact.email}`}>
+				Email me
+			</a>
+			<a class="btn-secondary" href={site.contact.whatsapp} target="_blank" rel="noopener noreferrer">
+				WhatsApp
+			</a>
+		</div>
+
+		<p class="mt-4 font-mono text-sm text-muted">
+			{site.contact.phoneDisplay} · {site.contact.email}
+		</p>
+
+		<ul class="mt-10 flex flex-wrap gap-4 font-mono text-sm text-muted">
+			{
+				site.contact.socials.map((social) => (
+					<li>
+						<a
+							href={social.href}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="transition hover:text-accent"
+						>
+							{social.label} ↗
+						</a>
+					</li>
+				))
+			}
+		</ul>
+
+		<p class="mt-16 font-mono text-xs text-muted/70">
+			© {new Date().getFullYear()} {site.fullName}. Built with Astro.
+		</p>
+	</div>
+</section>

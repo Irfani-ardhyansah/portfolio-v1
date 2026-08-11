@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none">
+  <rect width="800" height="500" fill="#111821"/>
+  <rect x="48" y="64" width="704" height="372" rx="12" stroke="#243041" fill="#161f2b"/>
+  <rect x="88" y="120" width="180" height="16" rx="4" fill="#22d3ee" opacity="0.85"/>
+  <rect x="88" y="156" width="280" height="10" rx="3" fill="#243041"/>
+  <rect x="88" y="180" width="220" height="10" rx="3" fill="#243041"/>
+  <g opacity="0.9">
+    <rect x="88" y="240" width="140" height="120" rx="8" stroke="#22d3ee" stroke-opacity="0.35" fill="#0a0e14"/>
+    <rect x="252" y="240" width="140" height="120" rx="8" stroke="#243041" fill="#0a0e14"/>
+    <rect x="416" y="240" width="140" height="120" rx="8" stroke="#243041" fill="#0a0e14"/>
+    <path d="M228 300h24M392 300h24" stroke="#22d3ee" stroke-opacity="0.5"/>
+  </g>
+  <text x="88" y="420" fill="#8b9bb0" font-family="monospace" font-size="14">queue � worker � pdf</text>
+</svg>

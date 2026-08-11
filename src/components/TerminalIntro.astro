@@ -1,0 +1,101 @@
+---
+import { site } from '../data/site';
+---
+
+<div
+	id="terminal-intro"
+	class="fixed inset-0 z-50 flex items-center justify-center bg-bg px-4"
+	hidden
+	aria-live="polite"
+>
+	<div class="w-full max-w-xl overflow-hidden rounded-lg border border-border bg-surface shadow-[0_0_60px_rgb(34_211_238_/_0.08)]">
+		<div class="flex items-center justify-between border-b border-border px-4 py-3">
+			<div class="flex items-center gap-2" aria-hidden="true">
+				<span class="size-2.5 rounded-full bg-[#ff5f56]"></span>
+				<span class="size-2.5 rounded-full bg-[#ffbd2e]"></span>
+				<span class="size-2.5 rounded-full bg-[#27c93f]"></span>
+			</div>
+			<span class="font-mono text-[11px] text-muted">boot — portfolio.sh</span>
+			<button
+				id="intro-skip"
+				type="button"
+				class="font-mono text-[11px] text-muted transition hover:text-accent"
+			>
+				skip
+			</button>
+		</div>
+		<div class="min-h-[220px] space-y-2 px-5 py-5 font-mono text-sm leading-relaxed">
+			{
+				site.introModules.map((module, index) => (
+					<p class="intro-line text-muted opacity-0" data-index={index}>
+						<span class="text-accent">&gt;</span> loading {module} ...{' '}
+						<span class="intro-ok text-accent opacity-0">[ok]</span>
+					</p>
+				))
+			}
+		</div>
+	</div>
+</div>
+
+<script>
+	const STORAGE_KEY = 'portfolio-intro-seen';
+	const LINE_DELAY = 500;
+	const root = document.getElementById('terminal-intro');
+	const skipBtn = document.getElementById('intro-skip');
+	const lines = Array.from(document.querySelectorAll<HTMLElement>('.intro-line'));
+
+	function finishIntro() {
+		try {
+			sessionStorage.setItem(STORAGE_KEY, '1');
+		} catch {
+			/* ignore */
+		}
+		root?.classList.add('opacity-0', 'pointer-events-none', 'transition-opacity', 'duration-500');
+		window.setTimeout(() => {
+			root?.remove();
+			document.documentElement.classList.remove('intro-locked');
+		}, 500);
+	}
+
+	function shouldSkip() {
+		try {
+			if (sessionStorage.getItem(STORAGE_KEY) === '1') return true;
+		} catch {
+			/* ignore */
+		}
+		return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+	}
+
+	async function runIntro() {
+		if (!root) return;
+
+		if (shouldSkip()) {
+			root.remove();
+			return;
+		}
+
+		document.documentElement.classList.add('intro-locked');
+		root.hidden = false;
+
+		for (const line of lines) {
+			line.classList.remove('opacity-0');
+			line.classList.add('opacity-100', 'transition-opacity', 'duration-300');
+			await new Promise((r) => setTimeout(r, LINE_DELAY));
+			const ok = line.querySelector<HTMLElement>('.intro-ok');
+			ok?.classList.remove('opacity-0');
+			ok?.classList.add('opacity-100', 'transition-opacity', 'duration-200');
+		}
+
+		await new Promise((r) => setTimeout(r, 450));
+		finishIntro();
+	}
+
+	skipBtn?.addEventListener('click', finishIntro);
+	void runIntro();
+</script>
+
+<style is:global>
+	html.intro-locked {
+		overflow: hidden;
+	}
+</style>

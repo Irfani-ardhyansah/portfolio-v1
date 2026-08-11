@@ -1,0 +1,100 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/geist';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/500.css';
+
+@theme {
+	--color-bg: #0a0e14;
+	--color-surface: #111821;
+	--color-surface-2: #161f2b;
+	--color-border: #243041;
+	--color-text: #e6edf5;
+	--color-muted: #8b9bb0;
+	--color-accent: #22d3ee;
+	--color-accent-dim: color-mix(in oklab, #22d3ee 18%, transparent);
+	--font-sans: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
+	--font-mono: 'JetBrains Mono', ui-monospace, monospace;
+	--radius-card: 0.5rem;
+}
+
+@layer base {
+	html {
+		scroll-behavior: smooth;
+	}
+
+	body {
+		@apply bg-bg text-text font-sans antialiased;
+		background-image:
+			radial-gradient(circle at 1px 1px, rgb(36 48 65 / 0.55) 1px, transparent 0);
+		background-size: 24px 24px;
+		min-height: 100vh;
+	}
+
+	::selection {
+		background: var(--color-accent-dim);
+		color: var(--color-text);
+	}
+
+	:focus-visible {
+		outline: 2px solid var(--color-accent);
+		outline-offset: 3px;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+
+		*,
+		*::before,
+		*::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+		}
+	}
+}
+
+@layer components {
+	.glass-card {
+		@apply rounded-[var(--radius-card)] border border-border bg-surface/70 backdrop-blur-md;
+		box-shadow: 0 0 0 1px rgb(34 211 238 / 0);
+		transition:
+			border-color 200ms ease,
+			box-shadow 200ms ease,
+			transform 200ms ease;
+	}
+
+	.glass-card:hover {
+		border-color: color-mix(in oklab, var(--color-accent) 45%, var(--color-border));
+		box-shadow: 0 0 28px rgb(34 211 238 / 0.12);
+	}
+
+	.btn-primary {
+		@apply inline-flex items-center justify-center rounded-md bg-accent px-5 py-2.5 text-sm font-medium text-bg transition;
+	}
+
+	.btn-primary:hover {
+		box-shadow: 0 0 24px rgb(34 211 238 / 0.35);
+	}
+
+	.btn-secondary {
+		@apply inline-flex items-center justify-center rounded-md border border-border bg-surface/60 px-5 py-2.5 text-sm font-medium text-text transition hover:border-accent/50;
+	}
+
+	.section-shell {
+		@apply mx-auto w-full max-w-6xl px-5 py-20 md:px-8 md:py-28;
+	}
+
+	.section-label {
+		@apply mb-3 font-mono text-xs uppercase tracking-[0.2em] text-accent;
+	}
+
+	.section-title {
+		@apply text-2xl font-semibold tracking-tight text-text md:text-3xl;
+	}
+
+	.tech-badge {
+		@apply inline-flex items-center rounded-md border border-border bg-surface-2 px-3 py-1.5 font-mono text-xs text-muted;
+	}
+}

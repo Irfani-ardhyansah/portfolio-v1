@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" fill="none">
+  <rect width="900" height="700" fill="#111821"/>
+  <rect x="60" y="80" width="780" height="540" rx="16" fill="#161f2b" stroke="#243041"/>
+  <circle cx="280" cy="280" r="48" fill="#0a0e14" stroke="#22d3ee" stroke-opacity="0.5"/>
+  <circle cx="420" cy="250" r="40" fill="#0a0e14" stroke="#243041"/>
+  <circle cx="540" cy="290" r="44" fill="#0a0e14" stroke="#243041"/>
+  <rect x="180" y="400" width="540" height="140" rx="12" fill="#0a0e14" stroke="#243041"/>
+  <rect x="220" y="440" width="200" height="10" rx="3" fill="#22d3ee" opacity="0.7"/>
+  <rect x="220" y="470" width="320" height="8" rx="3" fill="#243041"/>
+  <rect x="220" y="494" width="260" height="8" rx="3" fill="#243041"/>
+  <text x="60" y="50" fill="#8b9bb0" font-family="monospace" font-size="14">collaboration / stakeholder liaison</text>
+</svg>

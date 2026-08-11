@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TerminalIntro from '../components/TerminalIntro.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import WorkHighlights from '../components/WorkHighlights.astro';
+import BeyondCode from '../components/BeyondCode.astro';
+import Services from '../components/Services.astro';
+import Contact from '../components/Contact.astro';
+---
+
+<BaseLayout>
+	<TerminalIntro />
+	<Navbar />
+	<main id="main">
+		<Hero />
+		<About />
+		<WorkHighlights />
+		<BeyondCode />
+		<Services />
+		<Contact />
+	</main>
+</BaseLayout>

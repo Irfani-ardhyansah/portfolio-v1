@@ -1,0 +1,20 @@
+---
+import { site } from '../data/site';
+---
+
+<section id="about" class="border-t border-border/60">
+	<div class="section-shell">
+		<p class="section-label">About</p>
+		<h2 class="section-title">{site.about.title}</h2>
+		<div class="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-muted">
+			{site.about.paragraphs.map((p) => <p>{p}</p>)}
+		</div>
+		<ul class="mt-10 flex flex-wrap gap-2">
+			{
+				site.about.techStack.map((tech) => (
+					<li class="tech-badge">{tech}</li>
+				))
+			}
+		</ul>
+	</div>
+</section>
