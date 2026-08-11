@@ -7,7 +7,7 @@ export const site = {
 		'Fullstack developer with 4+ years building reliable web systems — bridging engineering and stakeholders to ship on time.',
 	description:
 		'Portfolio of Mochamad Irfani Ardhyansah, a fullstack developer focused on backend architecture, APIs, and client-facing project coordination.',
-	location: 'Surabaya, Indonesia',
+	location: 'Yogyakarta, Indonesia',
 	nav: [
 		{ label: 'About', href: '#about' },
 		{ label: 'Work', href: '#work' },
@@ -21,7 +21,7 @@ export const site = {
 	about: {
 		title: 'Fullstack builder. Stakeholder-aware.',
 		paragraphs: [
-			'I am a fullstack developer based in Surabaya with 4+ years of experience across PHP, JavaScript, and modern web stacks — designing databases, building RESTful APIs, and shipping admin and user-facing modules.',
+			'I am a fullstack developer based in Yogyakarta with 4+ years of experience across PHP, JavaScript, and modern web stacks — designing databases, building RESTful APIs, and shipping admin and user-facing modules.',
 			'Beyond code, I have spent ~1.5 years as a project liaison (POC): coordinating clients, operations, and engineering, gathering feedback, and keeping delivery on track without sacrificing technical quality.',
 		],
 		techStack: [

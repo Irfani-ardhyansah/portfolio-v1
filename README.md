@@ -24,6 +24,15 @@ Gambar placeholder: `public/images/`.
 | `npm run build`   | Production build → `dist/`    |
 | `npm run preview` | Preview hasil build           |
 
+## Docker (small image for STB)
+
+```bash
+docker compose up -d --build
+```
+
+Site: `http://localhost:8080` · image ~BusyBox static · RAM limit 32 MB.  
+Details: [`docs/DEPLOY.md`](docs/DEPLOY.md) (Option 4).
+
 ## Deploy
 
 Full guide: [`docs/DEPLOY.md`](docs/DEPLOY.md).

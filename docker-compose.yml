@@ -1,0 +1,17 @@
+# Lightweight static portfolio for low-resource hosts (STB / small VPS).
+services:
+  portfolio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: portfolio:busybox
+    container_name: portfolio
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    # Keep footprint tiny on constrained devices
+    mem_limit: 32m
+    cpus: 0.25
+    read_only: true
+    tmpfs:
+      - /tmp:size=8m,mode=1777

@@ -73,6 +73,60 @@ Create `netlify.toml` at the Astro project root:
 3. Environment: use a Node version supported by Pages.
 4. Deploy.
 
+## Option 4 — Docker (STB / low storage)
+
+Static site served by **BusyBox httpd** (multi-stage build). Final image is typically **~5–15 MB**, RAM limit **32 MB** — fits devices with ~1.5 GB free.
+
+### Run with Compose
+
+```bash
+cd portfolio
+docker compose up -d --build
+```
+
+Open `http://<host-ip>:8080`.
+
+Stop / remove:
+
+```bash
+docker compose down
+```
+
+### Run with Docker CLI
+
+```bash
+docker build -t portfolio:busybox .
+docker run -d --name portfolio -p 8080:8080 --memory=32m --cpus=0.25 --read-only portfolio:busybox
+```
+
+### STB / ARM notes
+
+Build on the STB itself (slow but correct arch), or build for the device arch from a PC:
+
+```bash
+# 64-bit ARM (common on newer boxes)
+docker buildx build --platform linux/arm64 -t portfolio:busybox --load .
+
+# 32-bit ARM
+docker buildx build --platform linux/arm/v7 -t portfolio:busybox --load .
+```
+
+Save image and copy to the STB (avoids `npm install` on the box):
+
+```bash
+docker save portfolio:busybox | gzip > portfolio-busybox.tar.gz
+# copy file to STB, then:
+gunzip -c portfolio-busybox.tar.gz | docker load
+docker run -d --name portfolio -p 8080:8080 --memory=32m --cpus=0.25 --read-only portfolio:busybox
+```
+
+Check size:
+
+```bash
+docker images portfolio:busybox
+docker system df
+```
+
 ## Post-deploy checklist
 
 - [ ] Homepage loads; terminal intro shows once per browser session

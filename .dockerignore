@@ -1,0 +1,21 @@
+# Build context only — keep layers small
+node_modules
+dist
+.astro
+.git
+.github
+.vscode
+.idea
+.DS_Store
+*.md
+!README.md
+docs
+.tmp-cv
+.env
+.env.*
+npm-debug.log*
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+AGENTS.md
+CLAUDE.md
