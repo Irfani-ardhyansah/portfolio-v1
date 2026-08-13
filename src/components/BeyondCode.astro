@@ -1,5 +1,6 @@
 ---
 import { site } from '../data/site';
+import { asset } from '../lib/asset';
 ---
 
 <section id="beyond" class="border-t border-border/60">
@@ -11,7 +12,7 @@ import { site } from '../data/site';
 		<div class="mt-10 grid items-stretch gap-8 lg:grid-cols-2">
 			<div class="glass-card overflow-hidden">
 				<img
-					src={site.beyondCode.image}
+					src={asset(site.beyondCode.image)}
 					alt={site.beyondCode.imageAlt}
 					class="h-full min-h-[280px] w-full object-cover"
 					loading="lazy"

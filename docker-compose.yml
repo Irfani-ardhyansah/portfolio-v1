@@ -5,9 +5,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        # Nginx serves this app at http://host/portfolio/
+        # For root path instead: BASE_PATH=/
+        BASE_PATH: /portfolio
     image: portfolio:busybox
     container_name: portfolio
     # Optional host access for debug: http://host:8080
+    # Note: with BASE_PATH=/portfolio, open http://host:8080/portfolio/
     # Nginx on shared_net can use: http://portfolio:8080
     ports:
       - "8080:8080"

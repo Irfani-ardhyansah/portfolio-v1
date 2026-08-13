@@ -6,6 +6,11 @@ FROM node:22-alpine AS build
 
 WORKDIR /app
 
+# Local npm run → base "/"
+# Docker default → "/portfolio" (Nginx reverse proxy path)
+ARG BASE_PATH=/portfolio
+ENV BASE_PATH=$BASE_PATH
+
 COPY package.json package-lock.json ./
 RUN npm ci
 

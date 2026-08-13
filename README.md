@@ -24,13 +24,22 @@ Gambar placeholder: `public/images/`.
 | `npm run build`   | Production build → `dist/`    |
 | `npm run preview` | Preview hasil build           |
 
+## Base path (local vs server)
+
+| Mode | Base | URL |
+|------|------|-----|
+| Local (`npm run dev`) | `/` | `http://localhost:4321/` |
+| Docker / Nginx | `/portfolio` | `http://host/portfolio/` |
+
+Docker sets `BASE_PATH=/portfolio` at **build** time (see `Dockerfile` / `docker-compose.yml`).
+
 ## Docker (small image for STB)
 
 ```bash
 docker compose up -d --build
 ```
 
-Site: `http://localhost:8080` · image ~BusyBox static · RAM limit 32 MB.  
+Via Nginx: `http://host/portfolio/` · direct container debug: `http://host:8080/portfolio/`  
 Details: [`docs/DEPLOY.md`](docs/DEPLOY.md) (Option 4).
 
 ## Deploy
