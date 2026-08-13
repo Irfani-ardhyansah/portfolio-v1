@@ -6,9 +6,12 @@
   <rect x="88" y="180" width="220" height="10" rx="3" fill="#243041"/>
   <g opacity="0.9">
     <rect x="88" y="240" width="140" height="120" rx="8" stroke="#22d3ee" stroke-opacity="0.35" fill="#0a0e14"/>
+    <text x="158" y="305" text-anchor="middle" fill="#8b9bb0" font-family="monospace" font-size="13">queue</text>
     <rect x="252" y="240" width="140" height="120" rx="8" stroke="#243041" fill="#0a0e14"/>
+    <text x="322" y="305" text-anchor="middle" fill="#8b9bb0" font-family="monospace" font-size="13">worker</text>
     <rect x="416" y="240" width="140" height="120" rx="8" stroke="#243041" fill="#0a0e14"/>
+    <text x="486" y="305" text-anchor="middle" fill="#8b9bb0" font-family="monospace" font-size="13">pdf</text>
     <path d="M228 300h24M392 300h24" stroke="#22d3ee" stroke-opacity="0.5"/>
   </g>
-  <text x="88" y="420" fill="#8b9bb0" font-family="monospace" font-size="14">queue � worker � pdf</text>
+  <text x="88" y="420" fill="#8b9bb0" font-family="monospace" font-size="14">queue · worker · pdf</text>
 </svg>

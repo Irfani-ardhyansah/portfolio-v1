@@ -1,0 +1,42 @@
+---
+import { site } from '../data/site';
+---
+
+<section id="reviews" class="border-t border-border/60">
+	<div class="section-shell">
+		<p class="section-label">Reviews</p>
+		<h2 class="section-title">What clients say</h2>
+		<p class="mt-3 max-w-2xl text-muted">
+			Anonymous client feedback from freelance work — project titles kept generic where needed.
+		</p>
+
+		<ul class="mt-10 grid items-stretch gap-6 md:grid-cols-2">
+			{
+				site.testimonials.map((item) => (
+					<li class="glass-card flex h-full flex-col p-6">
+						<div class="flex flex-wrap items-center justify-between gap-2">
+							<p class="font-mono text-sm text-accent" aria-label={`${item.rating} out of 5 stars`}>
+								{item.rating.toFixed(1)}{' '}
+								<span class="tracking-tight text-accent" aria-hidden="true">
+									{'★'.repeat(item.rating)}
+								</span>
+							</p>
+							<span class="font-mono text-[11px] uppercase tracking-wider text-muted">
+								via {item.source}
+							</span>
+						</div>
+						<p class="mt-3 font-mono text-xs text-muted">{item.project}</p>
+						<blockquote class="mt-4 flex-1 text-sm italic leading-relaxed text-text/90">
+							“{item.quote}”
+						</blockquote>
+						<ul class="mt-5 flex flex-wrap gap-2">
+							{item.tags.map((tag) => (
+								<li class="tech-badge">{tag}</li>
+							))}
+						</ul>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>

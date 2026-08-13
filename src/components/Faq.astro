@@ -1,0 +1,31 @@
+---
+import { site } from '../data/site';
+---
+
+<section id="faq" class="border-t border-border/60">
+	<div class="section-shell">
+		<p class="section-label">FAQ</p>
+		<h2 class="section-title">Common questions</h2>
+
+		<div class="mt-10 space-y-3">
+			{
+				site.faq.map((item) => (
+					<details class="faq-item glass-card group open:border-accent/30">
+						<summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-left text-sm font-medium text-text marker:content-none [&::-webkit-details-marker]:hidden">
+							<span>{item.question}</span>
+							<span
+								class="font-mono text-accent transition group-open:rotate-45"
+								aria-hidden="true"
+							>
+								+
+							</span>
+						</summary>
+						<p class="border-t border-border/60 px-5 py-4 text-sm leading-relaxed text-muted">
+							{item.answer}
+						</p>
+					</details>
+				))
+			}
+		</div>
+	</div>
+</section>

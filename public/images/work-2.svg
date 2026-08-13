@@ -1,10 +1,31 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none">
   <rect width="800" height="500" fill="#111821"/>
-  <circle cx="400" cy="250" r="54" stroke="#22d3ee" stroke-width="2" fill="#0a0e14"/>
-  <text x="400" y="256" text-anchor="middle" fill="#e6edf5" font-family="monospace" font-size="14">API</text>
-  <circle cx="180" cy="140" r="36" stroke="#243041" fill="#161f2b"/>
-  <circle cx="620" cy="140" r="36" stroke="#243041" fill="#161f2b"/>
-  <circle cx="180" cy="360" r="36" stroke="#243041" fill="#161f2b"/>
-  <circle cx="620" cy="360" r="36" stroke="#243041" fill="#161f2b"/>
-  <path d="M216 160 L346 230 M584 160 L454 230 M216 340 L346 270 M584 340 L454 270" stroke="#22d3ee" stroke-opacity="0.45"/>
+  <rect x="48" y="56" width="704" height="388" rx="12" stroke="#243041" fill="#161f2b"/>
+
+  <!-- ETL pipeline -->
+  <rect x="80" y="100" width="100" height="44" rx="6" fill="#0a0e14" stroke="#22d3ee" stroke-opacity="0.5"/>
+  <text x="130" y="127" text-anchor="middle" fill="#e6edf5" font-family="monospace" font-size="12">ETL</text>
+  <path d="M180 122h36" stroke="#22d3ee" stroke-opacity="0.55"/>
+  <polygon points="216,118 228,122 216,126" fill="#22d3ee" opacity="0.7"/>
+  <rect x="228" y="100" width="120" height="44" rx="6" fill="#0a0e14" stroke="#243041"/>
+  <text x="288" y="127" text-anchor="middle" fill="#8b9bb0" font-family="monospace" font-size="12">reports</text>
+
+  <!-- GIS map panel -->
+  <rect x="80" y="180" width="320" height="200" rx="8" fill="#0a0e14" stroke="#243041"/>
+  <text x="100" y="208" fill="#22d3ee" font-family="monospace" font-size="12">GIS</text>
+  <path d="M110 280 C150 220, 200 320, 250 250 C290 200, 330 280, 370 240" stroke="#22d3ee" stroke-opacity="0.55" fill="none"/>
+  <circle cx="160" cy="250" r="5" fill="#22d3ee"/>
+  <circle cx="250" cy="250" r="5" fill="#22d3ee"/>
+  <circle cx="340" cy="245" r="5" fill="#22d3ee"/>
+
+  <!-- CCTV streams -->
+  <rect x="440" y="100" width="280" height="280" rx="8" fill="#0a0e14" stroke="#243041"/>
+  <text x="460" y="128" fill="#22d3ee" font-family="monospace" font-size="12">CCTV</text>
+  <rect x="460" y="148" width="110" height="72" rx="4" stroke="#22d3ee" stroke-opacity="0.35" fill="#111821"/>
+  <rect x="590" y="148" width="110" height="72" rx="4" stroke="#243041" fill="#111821"/>
+  <rect x="460" y="236" width="110" height="72" rx="4" stroke="#243041" fill="#111821"/>
+  <rect x="590" y="236" width="110" height="72" rx="4" stroke="#243041" fill="#111821"/>
+  <circle cx="515" cy="184" r="10" stroke="#22d3ee" stroke-opacity="0.6" fill="none"/>
+
+  <text x="80" y="420" fill="#8b9bb0" font-family="monospace" font-size="14">etl · gis · cctv</text>
 </svg>
