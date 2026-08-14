@@ -11,6 +11,8 @@ const base = !rawBase || rawBase === '/' ? '/' : rawBase;
 export default defineConfig({
 	site: 'https://example.com',
 	base,
+	// Helps static hosts + reverse proxies serve /work/index.html reliably
+	trailingSlash: 'always',
 	vite: {
 		plugins: [tailwindcss()],
 	},

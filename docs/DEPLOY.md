@@ -75,7 +75,41 @@ Create `netlify.toml` at the Astro project root:
 
 ## Option 4 — Docker (STB / low storage)
 
-Static site served by **BusyBox httpd** (multi-stage build). Final image is typically **~5–15 MB**, RAM limit **32 MB** — fits devices with ~1.5 GB free.
+Static site served by **Nginx Alpine** (multi-stage build). Built with `BASE_PATH=/portfolio`.
+
+### Correct URLs behind reverse proxy
+
+| Wrong | Correct |
+|-------|---------|
+| `http://host/work` | `http://host/portfolio/work/` |
+| `http://host:8080/work` | `http://host:8080/portfolio/work/` |
+
+The edge Nginx must proxy the **whole** `/portfolio/` prefix (including `/portfolio/work/`), not only `/portfolio` homepage.
+
+Recommended edge Nginx block:
+
+```nginx
+location = /portfolio {
+    return 301 /portfolio/;
+}
+
+location /portfolio/ {
+    proxy_pass http://portfolio:8080/;
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+}
+```
+
+Then rebuild portfolio and reload edge Nginx:
+
+```bash
+cd portfolio
+docker compose up -d --build
+docker exec <edge-nginx> nginx -s reload
+```
 
 ### Run with Compose
 
@@ -84,7 +118,7 @@ cd portfolio
 docker compose up -d --build
 ```
 
-Open `http://<host-ip>:8080`.
+Open `http://<host-ip>:8080/portfolio/` (direct) or `http://<host-ip>/portfolio/` (via edge Nginx).
 
 Stop / remove:
 
@@ -95,8 +129,13 @@ docker compose down
 ### Run with Docker CLI
 
 ```bash
-docker build -t portfolio:busybox .
-docker run -d --name portfolio -p 8080:8080 --memory=32m --cpus=0.25 --read-only portfolio:busybox
+docker build -t portfolio:web .
+docker run -d --name portfolio -p 8080:8080 --memory=64m --cpus=0.25 \
+  --read-only \
+  --tmpfs /tmp:size=8m \
+  --tmpfs /var/cache/nginx:size=16m \
+  --tmpfs /var/run:size=8m \
+  portfolio:web
 ```
 
 ### STB / ARM notes
@@ -105,25 +144,30 @@ Build on the STB itself (slow but correct arch), or build for the device arch fr
 
 ```bash
 # 64-bit ARM (common on newer boxes)
-docker buildx build --platform linux/arm64 -t portfolio:busybox --load .
+docker buildx build --platform linux/arm64 -t portfolio:web --load .
 
 # 32-bit ARM
-docker buildx build --platform linux/arm/v7 -t portfolio:busybox --load .
+docker buildx build --platform linux/arm/v7 -t portfolio:web --load .
 ```
 
 Save image and copy to the STB (avoids `npm install` on the box):
 
 ```bash
-docker save portfolio:busybox | gzip > portfolio-busybox.tar.gz
+docker save portfolio:web | gzip > portfolio-web.tar.gz
 # copy file to STB, then:
-gunzip -c portfolio-busybox.tar.gz | docker load
-docker run -d --name portfolio -p 8080:8080 --memory=32m --cpus=0.25 --read-only portfolio:busybox
+gunzip -c portfolio-web.tar.gz | docker load
+docker run -d --name portfolio -p 8080:8080 --memory=64m --cpus=0.25 \
+  --read-only \
+  --tmpfs /tmp:size=8m \
+  --tmpfs /var/cache/nginx:size=16m \
+  --tmpfs /var/run:size=8m \
+  portfolio:web
 ```
 
 Check size:
 
 ```bash
-docker images portfolio:busybox
+docker images portfolio:web
 docker system df
 ```
 

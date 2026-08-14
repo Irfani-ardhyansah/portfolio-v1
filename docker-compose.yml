@@ -6,23 +6,22 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        # Nginx serves this app at http://host/portfolio/
-        # For root path instead: BASE_PATH=/
+        # App is reverse-proxied at http://host/portfolio/
         BASE_PATH: /portfolio
-    image: portfolio:busybox
+    image: portfolio:web
     container_name: portfolio
-    # Optional host access for debug: http://host:8080
-    # Note: with BASE_PATH=/portfolio, open http://host:8080/portfolio/
-    # Nginx on shared_net can use: http://portfolio:8080
+    # Direct debug: http://host:8080/portfolio/  and  http://host:8080/portfolio/work/
+    # Via edge Nginx on shared_net: proxy_pass http://portfolio:8080/
     ports:
       - "8080:8080"
     restart: unless-stopped
-    # Keep footprint tiny on constrained devices
-    mem_limit: 32m
+    mem_limit: 64m
     cpus: 0.25
     read_only: true
     tmpfs:
       - /tmp:size=8m,mode=1777
+      - /var/cache/nginx:size=16m,mode=1777
+      - /var/run:size=8m,mode=1777
     networks:
       - shared_net
 

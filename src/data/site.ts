@@ -31,7 +31,7 @@ export const site = {
 			labelShort: 'Start a project',
 			href: '#contact',
 		},
-		allWork: { label: 'View all work', href: '/work' },
+		allWork: { label: 'View all work', href: '/work/' },
 	},
 	availability: 'Currently taking on new projects for Q1 2026',
 	stats: [
