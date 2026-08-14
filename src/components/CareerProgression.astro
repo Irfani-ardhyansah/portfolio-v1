@@ -1,0 +1,47 @@
+---
+import { site } from '../data/site';
+---
+
+<div class="mt-10 rounded-[var(--radius-card)] border border-border/70 bg-surface/40 px-5 py-6 md:px-6">
+	<p class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">Career progression</p>
+	<p class="mt-2 max-w-2xl text-sm text-muted">
+		Grew from hands-on engineering into a PM-equivalent PIC role, then chose to return to deep technical work.
+	</p>
+
+	<ol class="relative mt-6 space-y-0 pl-1">
+		{
+			site.workCatalog.careerProgression.map((step, index) => {
+				const isLast = index === site.workCatalog.careerProgression.length - 1;
+				return (
+					<li class="relative flex gap-4 pb-6 last:pb-0">
+						<div class="relative flex w-3 flex-col items-center">
+							<span
+								class:list={[
+									'relative z-10 mt-1 size-2.5 shrink-0 rounded-full border-2 border-accent bg-bg',
+									isLast && 'bg-accent shadow-[0_0_12px_rgb(34_211_238_/_0.45)]',
+								]}
+							/>
+							{!isLast ? (
+								<span
+									class="absolute top-3 bottom-0 w-px bg-accent/40"
+									aria-hidden="true"
+								/>
+							) : null}
+						</div>
+						<div class="min-w-0 pt-0.5">
+							<div class="flex flex-wrap items-center gap-2">
+								<p class="font-mono text-sm text-text">{step.label}</p>
+								{'status' in step && step.status ? (
+									<span class="rounded border border-accent/40 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wide text-accent">
+										{step.status}
+									</span>
+								) : null}
+							</div>
+							<p class="mt-0.5 font-mono text-xs text-muted">{step.detail}</p>
+						</div>
+					</li>
+				);
+			})
+		}
+	</ol>
+</div>

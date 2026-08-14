@@ -5,6 +5,7 @@ const icons = {
 	architecture: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><path d="M10 6.5h4M6.5 10v4M17.5 10v4M10 17.5h4"/></svg>`,
 	integration: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>`,
 	browser: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M2 8h20"/><circle cx="5.5" cy="5.5" r="0.75" fill="currentColor" stroke="none"/><circle cx="8" cy="5.5" r="0.75" fill="currentColor" stroke="none"/><circle cx="10.5" cy="5.5" r="0.75" fill="currentColor" stroke="none"/></svg>`,
+	server: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><circle cx="6" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="6" cy="18" r="1" fill="currentColor" stroke="none"/></svg>`,
 } as const;
 ---
 
@@ -15,7 +16,7 @@ const icons = {
 		<p class="mt-3 max-w-2xl text-muted">
 			Freelance help available per project or as a short retainer.
 		</p>
-		<ul class="mt-10 grid items-stretch gap-6 md:grid-cols-3">
+		<ul class="mt-10 grid items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-4">
 			{
 				site.services.map((service) => (
 					<li class="glass-card flex h-full flex-col p-6">

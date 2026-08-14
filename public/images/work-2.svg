@@ -27,5 +27,5 @@
   <rect x="590" y="236" width="110" height="72" rx="4" stroke="#243041" fill="#111821"/>
   <circle cx="515" cy="184" r="10" stroke="#22d3ee" stroke-opacity="0.6" fill="none"/>
 
-  <text x="80" y="420" fill="#8b9bb0" font-family="monospace" font-size="14">etl · gis · cctv</text>
+  <text x="80" y="420" fill="#8b9bb0" font-family="monospace" font-size="14">vue.js · postgresql · leaflet · pentaho</text>
 </svg>

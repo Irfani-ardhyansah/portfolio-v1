@@ -1,18 +1,19 @@
 ---
 import { site } from '../data/site';
-import { asset } from '../lib/asset';
+import { withBase } from '../lib/asset';
 ---
 
 <section id="beyond" class="border-t border-border/60">
 	<div class="section-shell">
 		<p class="section-label">{site.beyondCode.title}</p>
 		<h2 class="section-title">{site.beyondCode.subtitle}</h2>
+		<p class="mt-1 font-mono text-xs text-muted/80">{site.beyondCode.companyContext}</p>
 		<p class="mt-3 max-w-2xl text-muted">{site.beyondCode.intro}</p>
 
 		<div class="mt-10 grid items-stretch gap-8 lg:grid-cols-2">
 			<div class="glass-card overflow-hidden">
 				<img
-					src={asset(site.beyondCode.image)}
+					src={withBase(site.beyondCode.image)}
 					alt={site.beyondCode.imageAlt}
 					class="h-full min-h-[280px] w-full object-cover"
 					loading="lazy"

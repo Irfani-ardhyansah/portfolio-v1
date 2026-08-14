@@ -1,12 +1,20 @@
 ---
 import { site } from '../data/site';
+import { withBase } from '../lib/asset';
+
+interface Props {
+	variant?: 'home' | 'inner';
+}
+
+const { variant = 'home' } = Astro.props;
+const root = withBase('');
 ---
 
 <header
 	class="sticky top-0 z-40 border-b border-border/70 bg-bg/75 backdrop-blur-md"
 >
 	<nav class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4 md:px-8">
-		<a href="#top" class="font-mono text-sm font-medium tracking-wide text-text">
+		<a href={variant === 'home' ? '#top' : root} class="font-mono text-sm font-medium tracking-wide text-text">
 			<span class="text-accent">~/</span>{site.name.toLowerCase()}
 		</a>
 
@@ -25,17 +33,33 @@ import { site } from '../data/site';
 			class="absolute left-0 right-0 top-full hidden flex-col gap-1 border-b border-border bg-bg/95 px-5 py-4 backdrop-blur-md md:static md:flex md:flex-row md:items-center md:gap-6 md:border-0 md:bg-transparent md:p-0"
 		>
 			{
-				site.nav.map((item) => (
-					<li>
-						<a
-							href={item.href}
-							class="nav-link block py-2 font-mono text-sm text-muted transition hover:text-accent md:py-0"
-						>
-							{item.label}
-						</a>
-					</li>
-				))
+				site.nav.map((item) => {
+					const href =
+						variant === 'home'
+							? item.href
+							: item.href.startsWith('#')
+								? `${root}${item.href}`
+								: withBase(item.href);
+					return (
+						<li>
+							<a
+								href={href}
+								class="nav-link block py-2 font-mono text-sm text-muted transition hover:text-accent md:py-0"
+							>
+								{item.label}
+							</a>
+						</li>
+					);
+				})
 			}
+			<li>
+				<a
+					href={withBase('work')}
+					class="nav-link block py-2 font-mono text-sm text-muted transition hover:text-accent md:py-0"
+				>
+					All work
+				</a>
+			</li>
 		</ul>
 	</nav>
 </header>

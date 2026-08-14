@@ -13,5 +13,5 @@
     <text x="486" y="305" text-anchor="middle" fill="#8b9bb0" font-family="monospace" font-size="13">pdf</text>
     <path d="M228 300h24M392 300h24" stroke="#22d3ee" stroke-opacity="0.5"/>
   </g>
-  <text x="88" y="420" fill="#8b9bb0" font-family="monospace" font-size="14">queue · worker · pdf</text>
+  <text x="88" y="420" fill="#8b9bb0" font-family="monospace" font-size="14">laravel · rabbitmq · kong</text>
 </svg>
