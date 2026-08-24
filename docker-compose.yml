@@ -10,7 +10,7 @@ services:
         BASE_PATH: /portfolio
     image: portfolio:web
     container_name: portfolio
-    # Direct debug: http://host:8080/portfolio/  and  http://host:8080/portfolio/work/
+    # Direct / ngrok: http://host:8080/portfolio/  (share https://<ngrok>/portfolio/)
     # Via edge Nginx on shared_net: proxy_pass http://portfolio:8080/
     ports:
       - "8080:8080"
