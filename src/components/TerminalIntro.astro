@@ -20,6 +20,8 @@ import { site } from '../data/site';
 				id="intro-skip"
 				type="button"
 				class="font-mono text-[11px] text-muted transition hover:text-accent"
+				data-track="intro_skip"
+				data-track-type="button"
 			>
 				skip
 			</button>
@@ -44,7 +46,25 @@ import { site } from '../data/site';
 	const skipBtn = document.getElementById('intro-skip');
 	const lines = Array.from(document.querySelectorAll<HTMLElement>('.intro-line'));
 
-	function finishIntro() {
+	function emit(name: string) {
+		const w = window as Window & {
+			pfTrack?: (eventName: string) => void;
+			pfQueue?: Array<[string]>;
+		};
+		if (w.pfTrack) w.pfTrack(name);
+		else {
+			w.pfQueue ??= [];
+			w.pfQueue.push([name]);
+		}
+	}
+
+	let finished = false;
+
+	function finishIntro(skipped: boolean) {
+		if (finished) return;
+		finished = true;
+		if (skipped) emit('intro_skipped');
+		else emit('intro_completed');
 		try {
 			sessionStorage.setItem(STORAGE_KEY, '1');
 		} catch {
@@ -76,6 +96,7 @@ import { site } from '../data/site';
 
 		document.documentElement.classList.add('intro-locked');
 		root.hidden = false;
+		emit('intro_shown');
 
 		for (const line of lines) {
 			line.classList.remove('opacity-0');
@@ -87,10 +108,10 @@ import { site } from '../data/site';
 		}
 
 		await new Promise((r) => setTimeout(r, 450));
-		finishIntro();
+		finishIntro(false);
 	}
 
-	skipBtn?.addEventListener('click', finishIntro);
+	skipBtn?.addEventListener('click', () => finishIntro(true));
 	void runIntro();
 </script>
 

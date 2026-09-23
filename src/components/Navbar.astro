@@ -14,7 +14,12 @@ const root = withBase('');
 	class="sticky top-0 z-40 border-b border-border/70 bg-bg/75 backdrop-blur-md"
 >
 	<nav class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4 md:px-8">
-		<a href={variant === 'home' ? '#top' : root} class="font-mono text-sm font-medium tracking-wide text-text">
+		<a
+			href={variant === 'home' ? '#top' : root}
+			class="font-mono text-sm font-medium tracking-wide text-text"
+			data-track="nav_logo"
+			data-track-type="link"
+		>
 			<span class="text-accent">~/</span>{site.name.toLowerCase()}
 		</a>
 
@@ -24,6 +29,8 @@ const root = withBase('');
 			class="inline-flex items-center rounded-md border border-border px-3 py-1.5 font-mono text-xs text-muted md:hidden"
 			aria-expanded="false"
 			aria-controls="nav-menu"
+			data-track="nav_toggle"
+			data-track-type="button"
 		>
 			Menu
 		</button>
@@ -45,6 +52,8 @@ const root = withBase('');
 							<a
 								href={href}
 								class="nav-link block py-2 font-mono text-sm text-muted transition hover:text-accent md:py-0"
+								data-track={item.trackId}
+								data-track-type="link"
 							>
 								{item.label}
 							</a>
@@ -56,6 +65,8 @@ const root = withBase('');
 				<a
 					href={withBase('work/')}
 					class="nav-link block py-2 font-mono text-sm text-muted transition hover:text-accent md:py-0"
+					data-track="nav_all_work"
+					data-track-type="link"
 				>
 					All work
 				</a>

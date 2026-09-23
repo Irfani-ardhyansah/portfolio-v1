@@ -6,7 +6,7 @@ export const site = {
 	role: 'Fullstack Developer',
 	headline: 'Irfan — Fullstack Developer',
 	subheadline:
-		'Fullstack developer with 4+ years building reliable web systems — bridging engineering and stakeholders to ship on time.',
+		'Fullstack developer with 5+ years building reliable web systems — bridging engineering and stakeholders to ship on time.',
 	valueProp: [
 		{ text: "I don't just write code — I ", accent: false },
 		{ text: 'translate business needs into working software', accent: true },
@@ -15,14 +15,14 @@ export const site = {
 		{ text: '.', accent: false },
 	],
 	description:
-		'Portfolio of Mochamad Irfani Ardhyansah, a fullstack developer based in Surabaya, Indonesia — focused on backend architecture, APIs, and client-facing project coordination.',
-	location: 'Surabaya, Indonesia',
+		'Portfolio of Mochamad Irfani Ardhyansah, a fullstack developer based in Yogyakarta, Indonesia — focused on backend architecture, APIs, and client-facing project coordination.',
+	location: 'Yogyakarta, Indonesia',
 	nav: [
-		{ label: 'About', href: '#about' },
-		{ label: 'Work', href: '#work' },
-		{ label: 'Reviews', href: '#reviews' },
-		{ label: 'Services', href: '#services' },
-		{ label: 'Contact', href: '#contact' },
+		{ label: 'About', href: '#about', trackId: 'nav_about' },
+		{ label: 'Work', href: '#work', trackId: 'nav_work' },
+		{ label: 'Reviews', href: '#reviews', trackId: 'nav_reviews' },
+		{ label: 'Services', href: '#services', trackId: 'nav_services' },
+		{ label: 'Contact', href: '#contact', trackId: 'nav_contact' },
 	],
 	ctas: {
 		primary: { label: 'View projects', href: '#work' },
@@ -35,7 +35,7 @@ export const site = {
 	},
 	availability: 'Currently taking on new projects for Q1 2026',
 	stats: [
-		{ value: '4+', label: 'Years Experience' },
+		{ value: '5+', label: 'Years Experience' },
 		{ value: '15+', label: 'Projects Delivered' },
 		{ value: '1.5', label: 'Yrs as POC / Liaison' },
 		{ value: '5.0★', label: 'Upwork Rating' },
@@ -43,7 +43,7 @@ export const site = {
 	about: {
 		title: 'Fullstack builder. Stakeholder-aware.',
 		paragraphs: [
-			'I am a fullstack developer based in Surabaya with 4+ years of experience across PHP, JavaScript, and modern web stacks — designing databases, building RESTful APIs, and shipping admin and user-facing modules.',
+			'I am a fullstack developer based in Yogyakarta with 5+ years of experience across PHP, JavaScript, and modern web stacks — designing databases, building RESTful APIs, and shipping admin and user-facing modules.',
 			'Beyond code, I have spent ~1.5 years as a project liaison (POC): coordinating clients, operations, and engineering, gathering feedback, and keeping delivery on track without sacrificing technical quality.',
 		],
 		techStack: [
@@ -94,6 +94,7 @@ export const site = {
 			impactMetric: '',
 			impactDetail: '',
 			stack: 'laravel · rabbitmq · kong gateway · docker',
+			slug: 'ecommerce-platform',
 			image: '/images/work-1.svg',
 			imageAlt: 'Illustration of an e-commerce platform with microservices and integrations',
 		},
@@ -108,6 +109,7 @@ export const site = {
 			impactDetail:
 				'integrated a Health Management System, Academic Information System (Vue.js), RFID-based Library Application (C#), geospatial mapping with CCTV data, and SmartClass multi-stream CCTV — plus ETL/reporting with Pentaho on PostgreSQL.',
 			stack: 'vue.js · postgresql · leaflet · pentaho',
+			slug: 'campus-ops',
 			image: '/images/work-2.svg',
 			imageAlt: 'Illustration of campus platform modules including GIS and CCTV',
 		},
@@ -132,6 +134,7 @@ export const site = {
 			impactMetric: '',
 			impactDetail: '',
 			stack: 'laravel · queue · mysql · sql optimization',
+			slug: 'kledo',
 			image: '/images/work-3.svg',
 			imageAlt: 'Illustration of a large-scale SaaS backend and database optimization',
 		},
@@ -146,6 +149,7 @@ export const site = {
 			impactDetail:
 				'while coordinating closely with a remote team lead across time zones — including admin UI work, database design for EOS/VTO features, and stability fixes on CakePHP/MySQL.',
 			stack: 'php · cakephp · jquery · mysql',
+			slug: 'international-freelance',
 			image: '/images/work-4.svg',
 			imageAlt: 'Illustration of remote freelance delivery across time zones',
 		},
@@ -510,7 +514,7 @@ export const site = {
 		{
 			question: 'Do you work with clients in different timezones?',
 			answer:
-				"Yes — I'm based in Surabaya (GMT+7) and regularly work async with clients across timezones, with overlap windows for calls when needed.",
+				"Yes — I'm based in Yogyakarta (GMT+7) and regularly work async with clients across timezones, with overlap windows for calls when needed.",
 		},
 		{
 			question: 'How do you handle payments?',
@@ -529,7 +533,7 @@ export const site = {
 	],
 	contact: {
 		headline: 'Have a project or need a fullstack partner?',
-		body: 'Send a short brief — I reply via email or WhatsApp. Based in Surabaya, Indonesia.',
+		body: 'Send a short brief — I reply via email or WhatsApp. Based in Yogyakarta, Indonesia.',
 		/** Split to reduce plain-text scraping; assembled in Contact.astro script */
 		emailUser: 'mohamadfani99',
 		emailDomain: 'gmail.com',

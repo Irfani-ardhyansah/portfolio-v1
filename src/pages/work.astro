@@ -16,15 +16,32 @@ import { withBase } from '../lib/asset';
 			Professional delivery, freelance work, and earlier projects — aligned with my CV.
 		</p>
 		<p class="mt-4">
-			<a href={withBase('')} class="font-mono text-sm text-accent transition hover:underline">
+			<a
+				href={withBase('')}
+				class="font-mono text-sm text-accent transition hover:underline"
+				data-track="work_back_home"
+				data-track-type="link"
+			>
 				← Back to home
 			</a>
 		</p>
 
 		<CareerProgression />
-		<WorkCatalogSection title="Professional Work" items={site.workCatalog.professional} />
-		<WorkCatalogSection title="Freelance Projects" items={site.workCatalog.freelance} />
-		<WorkCatalogSection title="Personal & Side Projects" items={site.workCatalog.personal} />
+		<WorkCatalogSection
+			sectionId="professional"
+			title="Professional Work"
+			items={site.workCatalog.professional}
+		/>
+		<WorkCatalogSection
+			sectionId="freelance"
+			title="Freelance Projects"
+			items={site.workCatalog.freelance}
+		/>
+		<WorkCatalogSection
+			sectionId="personal"
+			title="Personal & Side Projects"
+			items={site.workCatalog.personal}
+		/>
 	</main>
 
 	<footer class="border-t border-border/60">

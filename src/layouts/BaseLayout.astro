@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Analytics from '../components/Analytics.astro';
 import { site } from '../data/site';
 import { withBase } from '../lib/asset';
 
@@ -32,5 +33,6 @@ const { title = `${site.headline} | Portfolio`, description = site.description }
 			Skip to content
 		</a>
 		<slot />
+		<Analytics />
 	</body>
 </html>

@@ -6,15 +6,20 @@ type WorkEntry = (typeof site.workCatalog.professional)[number];
 interface Props {
 	title: string;
 	items: WorkEntry[];
+	sectionId: 'professional' | 'freelance' | 'personal';
 	/** Default closed accordion */
 	defaultOpen?: boolean;
 }
 
-const { title, items, defaultOpen = false } = Astro.props;
+const { title, items, sectionId, defaultOpen = false } = Astro.props;
 const count = items.length;
 ---
 
-<details class="work-catalog group mt-8 rounded-[var(--radius-card)] border border-border/70 bg-surface/30 open:border-accent/25" open={defaultOpen || undefined}>
+<details
+	class="work-catalog group mt-8 rounded-[var(--radius-card)] border border-border/70 bg-surface/30 open:border-accent/25"
+	open={defaultOpen || undefined}
+	data-section={sectionId}
+>
 	<summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 marker:content-none [&::-webkit-details-marker]:hidden md:px-6">
 		<div class="min-w-0">
 			<h2 class="section-title text-xl md:text-2xl">{title}</h2>
@@ -33,7 +38,13 @@ const count = items.length;
 	<ul class="divide-y divide-border/60 border-t border-border/60 px-5 md:px-6">
 		{
 			items.map((item) => (
-				<li class="flex flex-col gap-3 py-5 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
+				<li
+					class="flex flex-col gap-3 py-5 sm:flex-row sm:items-start sm:justify-between sm:gap-6"
+					data-track="catalog_item"
+					data-track-type="link"
+					data-track-group={sectionId}
+					data-track-title={item.title}
+				>
 					<div class="min-w-0 flex-1">
 						<div class="flex flex-wrap items-center gap-2">
 							<h3 class="text-base font-medium text-text">{item.title}</h3>

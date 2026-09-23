@@ -3,7 +3,7 @@ import { site } from '../data/site';
 import { withBase } from '../lib/asset';
 ---
 
-<section id="work" class="border-t border-border/60">
+<section id="work" data-section="work" class="border-t border-border/60">
 	<div class="section-shell">
 		<div class="flex flex-wrap items-end justify-between gap-4">
 			<div>
@@ -16,6 +16,8 @@ import { withBase } from '../lib/asset';
 			<a
 				href={withBase('work/')}
 				class="font-mono text-sm text-accent transition hover:underline"
+				data-track="cta_all_work"
+				data-track-type="link"
 			>
 				{site.ctas.allWork.label} →
 			</a>
@@ -23,7 +25,14 @@ import { withBase } from '../lib/asset';
 		<ul class="mt-10 grid items-stretch gap-6 sm:grid-cols-2">
 			{
 				site.work.map((item) => (
-					<li class="glass-card flex h-full flex-col overflow-hidden">
+					<li
+						class="glass-card flex h-full flex-col overflow-hidden"
+						data-track="work_card"
+						data-track-type="card"
+						data-track-card
+						data-work-slug={item.slug}
+						data-track-label={item.title}
+					>
 						<img
 							src={withBase(item.image)}
 							alt={item.imageAlt}

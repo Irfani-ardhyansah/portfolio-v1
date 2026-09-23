@@ -2,7 +2,7 @@
 import { site } from '../data/site';
 ---
 
-<section id="top" class="relative overflow-hidden">
+<section id="top" data-section="hero" class="relative overflow-hidden">
 	<div
 		class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgb(34_211_238_/_0.10),_transparent_50%)]"
 		aria-hidden="true"
@@ -35,8 +35,20 @@ import { site } from '../data/site';
 					}
 				</p>
 				<div class="mt-9 flex flex-wrap gap-3">
-					<a class="btn-primary" href={site.ctas.primary.href}>{site.ctas.primary.label}</a>
-					<a class="btn-secondary whitespace-normal text-center sm:whitespace-nowrap" href={site.ctas.secondary.href}>
+					<a
+						class="btn-primary"
+						href={site.ctas.primary.href}
+						data-track="cta_view_projects"
+						data-track-type="cta"
+					>
+						{site.ctas.primary.label}
+					</a>
+					<a
+						class="btn-secondary whitespace-normal text-center sm:whitespace-nowrap"
+						href={site.ctas.secondary.href}
+						data-track="cta_start_project"
+						data-track-type="cta"
+					>
 						<span class="hidden sm:inline">{site.ctas.secondary.label}</span>
 						<span class="sm:hidden">{site.ctas.secondary.labelShort}</span>
 					</a>
@@ -55,7 +67,7 @@ import { site } from '../data/site';
 						<p><span class="text-accent">&gt;</span> whoami</p>
 						<p class="pl-3 text-text">{site.name.toLowerCase()} · {site.role.toLowerCase()}</p>
 						<p><span class="text-accent">&gt;</span> uptime --role</p>
-						<p class="pl-3">4+ yrs shipping web systems</p>
+						<p class="pl-3">5+ yrs shipping web systems</p>
 						<p><span class="text-accent">&gt;</span> status --poc</p>
 						<p class="pl-3 text-accent">ok · liaison 1.5 yrs</p>
 						<p class="text-accent/80">█</p>

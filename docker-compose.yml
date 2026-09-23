@@ -8,6 +8,8 @@ services:
       args:
         # App is reverse-proxied at http://host/portfolio/
         BASE_PATH: /portfolio
+        PUBLIC_ANALYTICS_API_BASE: ${PUBLIC_ANALYTICS_API_BASE:-}
+        PUBLIC_ANALYTICS_WRITE_KEY: ${PUBLIC_ANALYTICS_WRITE_KEY:-}
     image: portfolio:web
     container_name: portfolio
     # Direct / ngrok: http://host:8080/portfolio/  (share https://<ngrok>/portfolio/)
