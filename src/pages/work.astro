@@ -31,6 +31,7 @@ import { withBase } from '../lib/asset';
 			sectionId="professional"
 			title="Professional Work"
 			items={site.workCatalog.professional}
+			defaultOpen
 		/>
 		<WorkCatalogSection
 			sectionId="freelance"
@@ -47,7 +48,7 @@ import { withBase } from '../lib/asset';
 	<footer class="border-t border-border/60">
 		<div class="section-shell !py-10">
 			<p class="font-mono text-xs text-muted/70">
-				© {new Date().getFullYear()} {site.name} · {site.fullName}. Based in {site.location}.
+				© {new Date().getFullYear()} {site.name}. Based in {site.location}.
 			</p>
 		</div>
 	</footer>

@@ -87,6 +87,24 @@ const count = items.length;
 								{item.description}
 							</p>
 						) : null}
+						{'contributions' in item && item.contributions ? (
+							<div class="mt-4">
+								<p class="font-mono text-[11px] uppercase tracking-wider text-muted/80">
+									Key contributions
+								</p>
+								<ul class="mt-2 space-y-2 text-sm leading-relaxed text-muted">
+									{item.contributions.map((contribution) => (
+										<li class="flex gap-2.5">
+											<span
+												class="mt-[0.45rem] size-1.5 shrink-0 rounded-full bg-accent/70"
+												aria-hidden="true"
+											/>
+											<span>{contribution}</span>
+										</li>
+									))}
+								</ul>
+							</div>
+						) : null}
 						{'stackLines' in item && item.stackLines ? (
 							<ul class="mt-2 space-y-1">
 								{item.stackLines.map((line) => (

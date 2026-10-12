@@ -1,21 +1,41 @@
 export const site = {
-	/** Short display name used in nav/hero (nickname of Irfani) */
+	/** Display name used across nav, hero, and footer */
 	name: 'Irfan',
-	/** Legal / footer name — "Irfani" is correct, not a typo of Irfan */
-	fullName: 'Mochamad Irfani Ardhyansah',
 	role: 'Fullstack Developer',
 	headline: 'Irfan — Fullstack Developer',
-	subheadline:
-		'Fullstack developer with 5+ years building reliable web systems — bridging engineering and stakeholders to ship on time.',
-	valueProp: [
-		{ text: "I don't just write code — I ", accent: false },
-		{ text: 'translate business needs into working software', accent: true },
-		{ text: ', and keep both ', accent: false },
-		{ text: 'engineers and stakeholders aligned', accent: true },
-		{ text: '.', accent: false },
+	tagline: 'Thoughtfully Built. Made to Last.',
+	/** Hero lead paragraph — split into parts so key phrases can be accented. */
+	heroLead: [
+		{
+			text: 'Fullstack developer with 5+ years turning complex requirements into ',
+			accent: false,
+			strong: false,
+		},
+		{ text: 'reliable web systems', accent: true, strong: false },
+		{
+			text: ' — from database design to production release. I keep engineering and stakeholders aligned, so projects ship on time and hold up in the real world.',
+			accent: false,
+			strong: false,
+		},
+	],
+	/** Hero philosophy paragraph — split into parts so key phrases can be accented. */
+	philosophy: [
+		{ text: 'Guided by the Javanese principle ', accent: false, strong: false },
+		{ text: "'Alon-alon waton kelakon'", accent: true, strong: false },
+		{
+			text: ' — move with deliberate care, build to last — I choose ',
+			accent: false,
+			strong: false,
+		},
+		{ text: 'solid architecture over rushed delivery', accent: false, strong: true },
+		{
+			text: ': less rework, fewer surprises, and software that keeps performing long after launch.',
+			accent: false,
+			strong: false,
+		},
 	],
 	description:
-		'Portfolio of Mochamad Irfani Ardhyansah, a fullstack developer based in Yogyakarta, Indonesia — focused on backend architecture, APIs, and client-facing project coordination.',
+		'Portfolio of Irfan, a fullstack developer based in Yogyakarta, Indonesia — focused on backend architecture, APIs, and client-facing project coordination.',
 	location: 'Yogyakarta, Indonesia',
 	nav: [
 		{ label: 'About', href: '#about', trackId: 'nav_about' },
@@ -115,7 +135,7 @@ export const site = {
 		},
 		{
 			title: 'Backend at Scale — Kledo',
-			role: 'Backend Developer — shipping features safely in a large production SaaS (Oct 2025 – Present).',
+			role: 'Backend Engineer — shipping features safely in a large production SaaS (Nov 2025 – Present).',
 			challenge:
 				'Every change lands in a busy production system — with many active users and multiple developers touching the same mature codebase.',
 			impactParts: [
@@ -157,34 +177,43 @@ export const site = {
 	workCatalog: {
 		careerProgression: [
 			{ label: 'Backend Developer @ Cyber Olympus', detail: 'Monolith to Microservices Migration' },
-			{ label: 'Software Engineer', detail: 'Naval Academy' },
-			{ label: 'PIC (PM equivalent)', detail: 'Military Academy' },
+			{ label: 'Software Engineer @ Maxxima Innovative Engineering', detail: 'Naval Academy' },
+			{ label: 'PIC (PM equivalent) @ Maxxima Innovative Engineering', detail: 'Military Academy' },
 			{ label: 'Backend Engineer @ Maxxima Innovative Engineering', detail: 'SaaS Academic' },
 			{
-				label: 'Backend Developer @ Kledo',
+				label: 'Backend Engineer @ Kledo',
 				detail: 'SaaS Accounting Application',
 				status: 'Present',
 			},
 		],
 		professional: [
 			{
-				title: 'Backend Developer — Kledo',
-				role: 'Backend Developer',
-				period: 'Oct 2025 – Present',
+				title: 'Backend Engineer — Kledo',
+				role: 'Backend Engineer',
+				period: 'Nov 2025 – Present',
 				org: 'Kledo',
 				descriptionParts: [
 					{ text: 'Working within a ', accent: false },
-					{ text: 'large, mature codebase', accent: true },
+					{ text: 'large, mature multi-tenant codebase', accent: true },
 					{ text: ' serving ', accent: false },
 					{ text: '250K+ users', accent: true },
 					{ text: ', with a ', accent: false },
 					{ text: 'growing team of developers', accent: true },
 					{
-						text: ' — where every feature and bug fix requires careful coordination to avoid breaking existing functionality across a big, actively-used system. Focus on query optimization, feature development, and safe, well-tested changes at scale.',
+						text: ', where every feature and bug fix requires careful coordination to avoid breaking existing functionality across a big, actively-used system. Focus on query optimization, feature development, and safe, well-tested changes at scale.',
 						accent: false,
 					},
 				],
-				stack: 'laravel · queue · mysql · sql optimization',
+				contributions: [
+					'Led the migration of the PDF rendering engine from DomPDF to Headless Chrome (Browsershot) across 140+ document templates and 15+ transaction types (invoices, quotes, orders, deliveries, returns, journals, expenses, warehouse transfers, receipts, dot-matrix). Rolled out in phases with visual parity against the legacy output, including client-specific custom layouts, multi-page tables, A4/A5/thermal paper sizes and RTL (Arabic) text.',
+					'Built MySQL full-text product search with multi-word queries, alphanumeric SKU matching and stopword handling. Kept short tokens on a narrow LIKE path so search stays fast on large product catalogs.',
+					'Refactored financial reports (Sales Detail, Income per Customer) onto a modular Service/Repository/DTO architecture, and added new filters and Excel exports (inventory stock movement, sales price history, customer financials).',
+					'Shipped 40+ configurable invoice-layout features used by thousands of businesses: payment terms and down-payment breakdowns, tax calculation detail, barcodes, "PAID" stamps, signature settings, multi-currency display.',
+					'Delivered features across Finance, POS, CRM and HR products: contact custom columns (multi-tenant schema migration), product sub-categories, POS mixed-quantity discount rules, WhatsApp blast exports, role-based access to the chart of accounts.',
+					'Resolved production issues surfaced through Sentry, including data remediation scripts (unit-conversion quantities, attachment duplication) and email/CC delivery bugs, each backed by regression tests.',
+				],
+				stack:
+					'Laravel · PHP 8 · MySQL (multi-tenant, full-text search, query optimization) · Redis · Queue (AWS SQS) · Headless Chrome / Browsershot · DomPDF · Excel export · PHPUnit · GitLab CI/CD · Sentry',
 				category: 'Professional',
 				links: [{ label: 'View live →', href: 'https://kledo.com' }],
 			},
@@ -537,10 +566,12 @@ export const site = {
 		/** Split to reduce plain-text scraping; assembled in Contact.astro script */
 		emailUser: 'mohamadfani99',
 		emailDomain: 'gmail.com',
-		waDigits: '6281332695709',
-		phoneDisplay: '+62 813-3269-5709',
+		waDigits: '6285156800570',
+		phoneDisplay: '+62-85156800570',
 		socials: [
-			{ label: 'Instagram', href: 'https://instagram.com/irfani_ardhyan' },
+			{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/irfani-ardhyansah/' },
+			{ label: 'Upwork', href: 'https://www.upwork.com/freelancers/~01c689fa37b0722feb' },
+			{ label: 'GitHub', href: 'https://github.com/Irfani-ardhyansah' },
 		],
 	},
 	introModules: [
